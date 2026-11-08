@@ -6,7 +6,7 @@ A small quantum simulator written with NumPy only, with no quantum libraries. A 
 
 # What it includes
 - Single-qubit states |0> and |1>
-- Gates: Pauli X (bit flip), Pauli Z (phase flip), Hadamard (H), S (Phase operation of pi/2 flip) , square root of NOT, and CNOT
+- Gates: Pauli X (bit flip), Pauli Z (phase flip), Hadamard (H), S (adds a phase of π/2 to |1>), square root of NOT, and CNOT
 - The square root of NOT built two ways, and a check that they agree: written directly as a matrix, and as H · S · H
 - Two-qubit states built with the tensor product (`np.kron`)
 - Measurement probabilities from squared amplitudes
@@ -27,4 +27,3 @@ The square root of NOT is a gate that gives NOT (X) when applied twice. Applying
 - A gate on one qubit of a pair is combined with the identity: `kron(H, I)` is H on the first qubit and `kron(I, H)` is H on the second.
 - CNOT flips the second qubit only when the first qubit is 1.
 - Product vs entangled: a state like |+>|0> can be split back into one state per qubit. The Bell state cannot, which is what entangled means. The code tests this by writing the 4 amplitudes as a 2x2 table: rank 1 means product, rank 2 means entangled.
-- Qubit order: this simulator writes the first qubit on the left. Qiskit writes qubit 0 on the right, so bit strings can look reversed when you compare the two.
